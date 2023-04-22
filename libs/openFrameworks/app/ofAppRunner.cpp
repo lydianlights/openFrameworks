@@ -432,12 +432,12 @@ glm::vec2 ofGetWindowSize() {
 }
 
 //--------------------------------------------------
-float ofRandomWidth() {
+ofFloat ofRandomWidth() {
 	return ofRandom(0.f, ofGetWidth());
 }
 
 //--------------------------------------------------
-float ofRandomHeight() {
+ofFloat ofRandomHeight() {
 	return ofRandom(0.f, ofGetHeight());
 }
 

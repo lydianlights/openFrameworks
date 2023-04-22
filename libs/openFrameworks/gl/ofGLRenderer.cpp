@@ -780,7 +780,7 @@ void ofGLRenderer::setupScreenPerspective(float width, float height, float fov, 
 
 
 	matrixMode(OF_MATRIX_PROJECTION);
-	glm::mat4 persp = glm::perspective(ofDegToRad(fov), aspect, nearDist, farDist);
+	glm::mat4 persp = glm::perspective<float>(ofDegToRad(fov), aspect, nearDist, farDist);
 	loadMatrix( persp );
 
 	matrixMode(OF_MATRIX_MODELVIEW);

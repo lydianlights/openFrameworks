@@ -22,6 +22,11 @@
 	#define OF_USE_LEGACY_VECTOR_MATH 0
 #endif
 
+// Set to 1 to use double precision in ofMath
+#ifndef OF_USE_DOUBLE_PRECISION_MATH
+	#define OF_USE_DOUBLE_PRECISION_MATH 0
+#endif
+
 // This enables glm's old behavior of initializing with non garbage values
 #define GLM_FORCE_CTOR_INIT
 

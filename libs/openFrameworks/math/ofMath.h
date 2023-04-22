@@ -5,6 +5,12 @@
 #include <glm/gtc/constants.hpp>
 #include <glm/fwd.hpp>
 
+#if OF_USE_DOUBLE_PRECISION_MATH == 1
+	typedef double ofFloat;
+#else
+	typedef float ofFloat;
+#endif
+
 /// \file
 /// ofMath provides a collection of mathematical utilities and functions.
 ///
@@ -30,7 +36,7 @@
 /// \warning ofRandom wraps C++'s `rand()` which is not reentrant or thread safe.
 ///
 /// \param max The maximum value of the random number.
-float ofRandom(float max); 
+ofFloat ofRandom(ofFloat max);
 
 /// \brief Get a random number between two values.
 ///
@@ -47,21 +53,21 @@ float ofRandom(float max);
 /// \param val0 the minimum value of the random number.
 /// \param val1 The maximum value of the random number.
 /// \returns A random floating point number between val0 and val1.
-float ofRandom(float val0, float val1);
+ofFloat ofRandom(ofFloat val0, ofFloat val1);
 
 /// \brief Get a random floating point number.
 ///
 /// \warning ofRandom wraps `rand()` which is not reentrant or thread safe.
 ///
 /// \returns A random floating point number between -1 and 1.
-float ofRandomf();
+ofFloat ofRandomf();
 
 /// \brief Get a random unsigned floating point number.
 ///
 /// \warning ofRandom wraps `rand()` which is not reentrant or thread safe.
 ///
 /// \returns A random floating point number between 0 and 1.
-float ofRandomuf();
+ofFloat ofRandomuf();
 
 
 /// \brief Get a random floating point number between 0 and the screen width.
@@ -71,7 +77,7 @@ float ofRandomuf();
 /// \warning ofRandom wraps `rand()` which is not reentrant or thread safe.
 ///
 /// \returns a random number between 0 and ofGetWidth().
-float ofRandomWidth();
+ofFloat ofRandomWidth();
 
 /// \brief Get a random floating point number between 0 and the screen height.
 ///
@@ -80,7 +86,7 @@ float ofRandomWidth();
 /// \warning ofRandom wraps `rand()` which is not reentrant or thread safe.
 ///
 /// \returns a random number between 0 and ofGetHeight().
-float ofRandomHeight();
+ofFloat ofRandomHeight();
 
 /// \brief Seed the seeds the random number generator with a unique value.
 ///
@@ -113,7 +119,7 @@ void ofSeedRandom(int val);
 /// \param min The lower bound of the range.
 /// \param max The upper bound of the range.
 /// \returns A float between 0 and 1.
-float ofNormalize(float value, float min, float max);
+ofFloat ofNormalize(ofFloat value, ofFloat min, ofFloat max);
 
 /// \brief Given a value and an input range, map the value to an output range.
 /// 
@@ -146,7 +152,7 @@ float ofNormalize(float value, float min, float max);
 ///		  std::numeric_limits<float>::epsilon(), outputMin will be returned to prevent divide by zero
 ///		  errors.
 /// \returns a mapped floating point number.
-float ofMap(float value, float inputMin, float inputMax, float outputMin, float outputMax, bool clamp = false);
+ofFloat ofMap(ofFloat value, ofFloat inputMin, ofFloat inputMax, ofFloat outputMin, ofFloat outputMax, bool clamp = false);
 
 /// \brief Clamp a value between min and max.
 /// 
@@ -167,14 +173,14 @@ float ofMap(float value, float inputMin, float inputMax, float outputMin, float 
 /// \param min The lower bound of the range.
 /// \param max The upper bound of the range.
 /// \returns a floating point number in the range [min, max].
-float ofClamp(float value, float min, float max);
+ofFloat ofClamp(ofFloat value, ofFloat min, ofFloat max);
 
 /// \brief Determine if a number is inside of a giv(float)(en range.
 /// \param t The value to test.
 /// \param min The lower bound of the range.
 /// \param max The upper bound of the range.
 /// \returns true if the number t is the range of [min, max].
-bool ofInRange(float t, float min, float max);
+bool ofInRange(ofFloat t, ofFloat min, ofFloat max);
 
 /// \brief Linearly interpolate a value within a range.
 /// 
@@ -198,7 +204,7 @@ bool ofInRange(float t, float min, float max);
 /// \param stop The upper bound of the range.
 /// \param amt The normalized [0, 1] value within the range to return.
 /// \returns A float between start and stop.
-float ofLerp(float start, float stop, float amt);
+ofFloat ofLerp(ofFloat start, ofFloat stop, ofFloat amt);
 
 /// \}
 
@@ -215,7 +221,7 @@ float ofLerp(float start, float stop, float amt);
 /// \param x2 X position of second point.
 /// \param y2 Y position of second point.
 /// \returns float Distance between points.
-float ofDist(float x1, float y1, float x2, float y2);
+ofFloat ofDist(ofFloat x1, ofFloat y1, ofFloat x2, ofFloat y2);
 ///
 /// \brief Calculates the 3D distance between two points.
 ///
@@ -228,7 +234,7 @@ float ofDist(float x1, float y1, float x2, float y2);
 /// \param y2 Y position of second point.
 /// \param z2 Z position of second point.
 /// \returns float Distance between points.
-float ofDist(float x1, float y1, float z1, float x2, float y2, float z2);
+ofFloat ofDist(ofFloat x1, ofFloat y1, ofFloat z1, ofFloat x2, ofFloat y2, ofFloat z2);
 
 /// \brief Calculates the squared 2D distance between two points.
 ///
@@ -241,7 +247,7 @@ float ofDist(float x1, float y1, float z1, float x2, float y2, float z2);
 /// \param x2 X position of second point.
 /// \param y2 Y position of second point.
 /// \returns distance-squared between two points.
-float ofDistSquared(float x1, float y1, float x2, float y2);
+ofFloat ofDistSquared(ofFloat x1, ofFloat y1, ofFloat x2, ofFloat y2);
 
 /// \brief Calculates the squared 3D distance between two points.
 ///
@@ -256,7 +262,7 @@ float ofDistSquared(float x1, float y1, float x2, float y2);
 /// \param y2 Y position of second point.
 /// \param z2 Z position of second point.
 /// \returns distance-squared between two points.
-float ofDistSquared(float x1, float y1, float z1, float x2, float y2, float z2);
+ofFloat ofDistSquared(ofFloat x1, ofFloat y1, ofFloat z1, ofFloat x2, ofFloat y2, ofFloat z2);
 
 /// \}
 
@@ -273,7 +279,7 @@ float ofDistSquared(float x1, float y1, float z1, float x2, float y2, float z2);
 ///
 /// \param radians An angle in radians.
 /// \returns the angle in degrees.
-float ofRadToDeg(float radians);
+ofFloat ofRadToDeg(ofFloat radians);
 
 /// \brief Convert degrees to radians.
 ///
@@ -284,7 +290,7 @@ float ofRadToDeg(float radians);
 ///
 /// \param degrees An angle in degrees.
 /// \returns the angle in radians.
-float ofDegToRad(float degrees);
+ofFloat ofDegToRad(ofFloat degrees);
 
 /// \brief Linearly interpolate a value between two angles in degrees.
 /// 
@@ -296,7 +302,7 @@ float ofDegToRad(float degrees);
 /// \param targetAngle The upper bound of the range in degrees.
 /// \param pct An amount between [0.0, 1.0] within the range to return.
 /// \returns An angle in degrees between currentAngle and targetAngle.
-float ofLerpDegrees(float currentAngle, float targetAngle, float pct);
+ofFloat ofLerpDegrees(ofFloat currentAngle, ofFloat targetAngle, ofFloat pct);
 
 /// \brief Linearly interpolate a value between two angles in radians.
 /// 
@@ -308,7 +314,7 @@ float ofLerpDegrees(float currentAngle, float targetAngle, float pct);
 /// \param targetAngle The upper bound of the range in radians.
 /// \param pct An amount between [0.0, 1.0] within the range to return.
 /// \returns An angle in radians between currentAngle and targetAngle.
-float ofLerpRadians(float currentAngle, float targetAngle, float pct);
+ofFloat ofLerpRadians(ofFloat currentAngle, ofFloat targetAngle, ofFloat pct);
 
 /// \brief Calculates the difference between two angles in degrees.
 ///
@@ -323,7 +329,7 @@ float ofLerpRadians(float currentAngle, float targetAngle, float pct);
 /// \param currentAngle The current angle in degrees.
 /// \param targetAngle the angle to be compared to in degrees.
 /// \returns The difference between two angles in degrees.
-float ofAngleDifferenceDegrees(float currentAngle, float targetAngle);
+ofFloat ofAngleDifferenceDegrees(ofFloat currentAngle, ofFloat targetAngle);
 
 /// \brief Calculates the difference between two angles in radians.
 ///
@@ -338,7 +344,7 @@ float ofAngleDifferenceDegrees(float currentAngle, float targetAngle);
 /// \param currentAngle The current angle in radians.
 /// \param targetAngle the angle to be compared to in radians.
 /// \returns The difference between two angles in radians.
-float ofAngleDifferenceRadians(float currentAngle, float targetAngle);
+ofFloat ofAngleDifferenceRadians(ofFloat currentAngle, ofFloat targetAngle);
 
 /// \}
 
@@ -361,13 +367,13 @@ float ofAngleDifferenceRadians(float currentAngle, float targetAngle);
 /// \param value The value to map.
 /// \param from The lower bound of the range.
 /// \returns to The upper bound of the range.
-float ofWrap(float value, float from, float to);
+ofFloat ofWrap(ofFloat value, ofFloat from, ofFloat to);
 
 // \brief Convenience function for ofWrap(), constrained between -PI...PI
-float ofWrapRadians(float angle, float from = -glm::pi<float>(), float to=glm::pi<float>());
+ofFloat ofWrapRadians(ofFloat angle, ofFloat from = -glm::pi<ofFloat>(), ofFloat to = glm::pi<ofFloat>());
 
 // \brief Convenience function for ofWrap(), constrained between -180...180
-float ofWrapDegrees(float angle, float from = -180, float to=+180);
+ofFloat ofWrapDegrees(ofFloat angle, ofFloat from = -180, ofFloat to=+180);
 
 /// \}
 
@@ -526,15 +532,19 @@ vectype ofCurveTangent(const vectype& a, const vectype& b, const vectype& c, con
 }
 
 template<typename Type>
-Type ofInterpolateCosine(const Type& y1, const Type& y2, float pct);
+Type ofInterpolateCosine(const Type& y1, const Type& y2, ofFloat pct);
+
 template<typename Type>
-Type ofInterpolateCubic(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct);
+Type ofInterpolateCubic(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct);
+
 template<typename Type>
-Type ofInterpolateCatmullRom(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct);
+Type ofInterpolateCatmullRom(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct);
+
 template<typename Type>
-Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct);
+Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct);
+
 template<typename Type>
-Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct, float tension, float bias);
+Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct, ofFloat tension, ofFloat bias);
 
 /// \}
 
@@ -559,7 +569,7 @@ int ofNextPow2(int a);
 
 /// \brief Returns the sign of a number.
 /// \returns int -1 if n is negative, 1 if n is positive, and 0 is n == 0;
-int ofSign(float n);
+int ofSign(ofFloat n);
 
 /// \brief Compare two floating point types for equality.
 ///
@@ -593,47 +603,47 @@ typename std::enable_if<std::is_floating_point<Type>::value, bool>::type ofIsFlo
 // from http://paulbourke.net/miscellaneous/interpolation/
 //--------------------------------------------------
 template<typename Type>
-Type ofInterpolateCosine(const Type& y1, const Type& y2, float pct){
-	float pct2;
+Type ofInterpolateCosine(const Type& y1, const Type& y2, ofFloat pct) {
+	ofFloat pct2;
 
-	pct2 = (1-cos(pct*glm::pi<float>()))/2;
-	return(y1*(1-pct2)+y2*pct2);
+	pct2 = (1 - cos(pct * glm::pi<ofFloat>())) / 2;
+	return(y1 * (1 - pct2) + y2 * pct2);
 }
 
 // from http://paulbourke.net/miscellaneous/interpolation/
 //--------------------------------------------------
 template<typename Type>
-Type ofInterpolateCubic(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct){
-	Type a0,a1,a2,a3;
-	float pct2;
+Type ofInterpolateCubic(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct) {
+	Type a0, a1, a2, a3;
+	ofFloat pct2;
 
-	pct2 = pct*pct;
+	pct2 = pct * pct;
 	a0 = y3 - y2 - y0 + y1;
 	a1 = y0 - y1 - a0;
 	a2 = y2 - y0;
 	a3 = y1;
 
-	return(a0*pct*pct2+a1*pct2+a2*pct+a3);
+	return(a0 * pct * pct2 + a1 * pct2 + a2 * pct + a3);
 }
 
 // from http://paulbourke.net/miscellaneous/interpolation/
 //--------------------------------------------------
 template<typename Type>
-Type ofInterpolateCatmullRom(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct){
-	Type a0,a1,a2,a3;
-	float pct2 = pct*pct;
-	a0 = -0.5*y0 + 1.5*y1 - 1.5*y2 + 0.5*y3;
-	a1 = y0 - 2.5*y1 + 2*y2 - 0.5*y3;
-	a2 = -0.5*y0 + 0.5*y2;
+Type ofInterpolateCatmullRom(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct) {
+	Type a0, a1, a2, a3;
+	ofFloat pct2 = pct * pct;
+	a0 = -0.5 * y0 + 1.5 * y1 - 1.5 * y2 + 0.5 * y3;
+	a1 = y0 - 2.5 * y1 + 2 * y2 - 0.5 * y3;
+	a2 = -0.5 * y0 + 0.5 * y2;
 	a3 = y1;
-	return(a0*pct*pct2 + a1*pct2 + a2*pct +a3);
+	return(a0 * pct * pct2 + a1 * pct2 + a2 * pct + a3);
 }
 
 // from http://musicdsp.org/showArchiveComment.php?ArchiveID=93
 // laurent de soras
 //--------------------------------------------------
 template<typename Type>
-inline Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct){
+inline Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct) {
 	const Type c = (y2 - y0) * 0.5f;
 	const Type v = y1 - y2;
 	const Type w = c + v;
@@ -646,21 +656,21 @@ inline Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2,
 // from http://paulbourke.net/miscellaneous/interpolation/
 //--------------------------------------------------
 template<typename Type>
-Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, float pct, float tension, float bias){
-	float pct2,pct3;
-	Type m0,m1;
-	Type a0,a1,a2,a3;
+Type ofInterpolateHermite(const Type& y0, const Type& y1, const Type& y2, const Type& y3, ofFloat pct, ofFloat tension, ofFloat bias) {
+	ofFloat pct2, pct3;
+	Type m0, m1;
+	Type a0, a1, a2, a3;
 
 	pct2 = pct * pct;
 	pct3 = pct2 * pct;
-	m0  = (y1-y0)*(1+bias)*(1-tension)/2;
-	m0 += (y2-y1)*(1-bias)*(1-tension)/2;
-	m1  = (y2-y1)*(1+bias)*(1-tension)/2;
-	m1 += (y3-y2)*(1-bias)*(1-tension)/2;
-	a0 =  Type(2*pct3 - 3*pct2 + 1);
-	a1 =  Type(pct3 - 2*pct2 + pct);
-	a2 =  Type(pct3 -   pct2);
-	a3 =  Type(-2*pct3 + 3*pct2);
+	m0 = (y1 - y0) * (1 + bias) * (1 - tension) / 2;
+	m0 += (y2 - y1) * (1 - bias) * (1 - tension) / 2;
+	m1 = (y2 - y1) * (1 + bias) * (1 - tension) / 2;
+	m1 += (y3 - y2) * (1 - bias) * (1 - tension) / 2;
+	a0 = Type(2 * pct3 - 3 * pct2 + 1);
+	a1 = Type(pct3 - 2 * pct2 + pct);
+	a2 = Type(pct3 - pct2);
+	a3 = Type(-2 * pct3 + 3 * pct2);
 
-   return(a0*y1+a1*m0+a2*m1+a3*y2);
+	return(a0 * y1 + a1 * m0 + a2 * m1 + a3 * y2);
 }

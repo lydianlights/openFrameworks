@@ -83,11 +83,6 @@ int 		ofGetWindowHeight();
 std::string ofGetClipboardString();
 void		ofSetClipboardString(const std::string & str);
 
-/// \returns a random number between 0 and the width of the window.
-float ofRandomWidth();
-
-/// \returns a random number between 0 and the height of the window.
-float ofRandomHeight();
 bool		ofDoesHWOrientation();
 glm::vec2	ofGetWindowSize();
 ofRectangle	ofGetWindowRect();

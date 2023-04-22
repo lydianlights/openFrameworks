@@ -966,7 +966,7 @@ void ofCairoRenderer::setupScreenPerspective(float width, float height, float fo
 	if(nearDist == 0) nearDist = dist / 10.0f;
 	if(farDist == 0) farDist = dist * 10.0f;
 
-	projection = glm::perspective(ofDegToRad(fov),aspect,nearDist,farDist);
+	projection = glm::perspective<float>(ofDegToRad(fov),aspect,nearDist,farDist);
 	modelView = glm::lookAt(glm::vec3(eyeX,eyeY,dist),glm::vec3(eyeX,eyeY,0),glm::vec3(0,1,0));
 
 

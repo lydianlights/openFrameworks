@@ -43,43 +43,44 @@ void ofSeedRandom(int val) {
 }
 
 //--------------------------------------------------
-float ofRandom(float max) {
-	return (max * rand() / float(RAND_MAX)) * (1.0f - std::numeric_limits<float>::epsilon());
+ofFloat ofRandom(ofFloat max) {
+	return (max * rand() / ofFloat(RAND_MAX)) * (1.0f - std::numeric_limits<ofFloat>::epsilon());
 }
 
 //--------------------------------------------------
-float ofRandom(float x, float y) {
-	float high = std::max(x, y);
-	float low = std::min(x, y);
-	return std::max(low, (low + ((high - low) * rand() / float(RAND_MAX))) * (1.0f - std::numeric_limits<float>::epsilon()));
+ofFloat ofRandom(ofFloat x, ofFloat y) {
+	ofFloat high = std::max(x, y);
+	ofFloat low = std::min(x, y);
+	return std::max(low, (low + ((high - low) * rand() / ofFloat(RAND_MAX))) * (1.0f - std::numeric_limits<ofFloat>::epsilon()));
 }
 
 //--------------------------------------------------
-float ofRandomf() {
-	return -1.0f + (2.0f * rand() / float(RAND_MAX)) * (1.0f - std::numeric_limits<float>::epsilon());
+ofFloat ofRandomf() {
+	return -1.0f + (2.0f * rand() / ofFloat(RAND_MAX)) * (1.0f - std::numeric_limits<ofFloat>::epsilon());
 }
 
 //--------------------------------------------------
-float ofRandomuf() {
-	return (rand() / float(RAND_MAX)) * (1.0f - std::numeric_limits<float>::epsilon());
+ofFloat ofRandomuf() {
+	return (rand() / ofFloat(RAND_MAX)) * (1.0f - std::numeric_limits<ofFloat>::epsilon());
 }
 
 //---- new to 006
 //from the forums http://www.openframeworks.cc/forum/viewtopic.php?t=1413
 
 //--------------------------------------------------
-float ofNormalize(float value, float min, float max){
+ofFloat ofNormalize(ofFloat value, ofFloat min, ofFloat max){
 	return ofClamp( (value - min) / (max - min), 0, 1);
 }
 
 //check for division by zero???
 //--------------------------------------------------
-float ofMap(float value, float inputMin, float inputMax, float outputMin, float outputMax, bool clamp) {
+ofFloat ofMap(ofFloat value, ofFloat inputMin, ofFloat inputMax, ofFloat outputMin, ofFloat outputMax, bool clamp) {
 
-	if (fabs(inputMin - inputMax) < std::numeric_limits<float>::epsilon()){
+	if (fabs(inputMin - inputMax) < std::numeric_limits<ofFloat>::epsilon()) {
 		return outputMin;
-	} else {
-		float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
+	}
+	else {
+		ofFloat outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
 	
 		if( clamp ){
 			if(outputMax < outputMin){
@@ -96,85 +97,85 @@ float ofMap(float value, float inputMin, float inputMax, float outputMin, float 
 }
 
 //--------------------------------------------------
-float ofDist(float x1, float y1, float x2, float y2) {
+ofFloat ofDist(ofFloat x1, ofFloat y1, ofFloat x2, ofFloat y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 
 //--------------------------------------------------
-float ofDist(float x1, float y1, float z1, float x2, float y2, float z2) {
+ofFloat ofDist(ofFloat x1, ofFloat y1, ofFloat z1, ofFloat x2, ofFloat y2, ofFloat z2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2));
 }
 
 //--------------------------------------------------
-float ofDistSquared(float x1, float y1, float x2, float y2) {
-	return ( (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) );
+ofFloat ofDistSquared(ofFloat x1, ofFloat y1, ofFloat x2, ofFloat y2) {
+	return ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 
 //--------------------------------------------------
-float ofDistSquared(float x1, float y1, float z1, float x2, float y2, float z2) {
-	return ( (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2) );
+ofFloat ofDistSquared(ofFloat x1, ofFloat y1, ofFloat z1, ofFloat x2, ofFloat y2, ofFloat z2) {
+	return ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2));
 }
 
 //--------------------------------------------------
-float ofClamp(float value, float min, float max) {
+ofFloat ofClamp(ofFloat value, ofFloat min, ofFloat max) {
 	return value < min ? min : value > max ? max : value;
 }
 
 //--------------------------------------------------
-int ofSign(float n) {
+int ofSign(ofFloat n) {
 	if( n > 0 ) return 1;
 	else if(n < 0) return -1;
 	else return 0;
 }
 
 //--------------------------------------------------
-bool ofInRange(float t, float min, float max) {
+bool ofInRange(ofFloat t, ofFloat min, ofFloat max) {
 	return t>=min && t<=max;
 }
 
 //--------------------------------------------------
-float ofRadToDeg(float radians) {
+ofFloat ofRadToDeg(ofFloat radians) {
 	return glm::degrees(radians);
 }
 
 //--------------------------------------------------
-float ofDegToRad(float degrees) {
+ofFloat ofDegToRad(ofFloat degrees) {
 	return glm::radians(degrees);
 }
 
 //--------------------------------------------------
-float ofLerp(float start, float stop, float amt) {
-	return start + (stop-start) * amt;
+ofFloat ofLerp(ofFloat start, ofFloat stop, ofFloat amt) {
+	return start + (stop - start) * amt;
 }
 
-float ofWrap(float value, float from, float to){
+ofFloat ofWrap(ofFloat value, ofFloat from, ofFloat to) {
 	// algorithm from http://stackoverflow.com/a/5852628/599884
-	if(from > to){
+	if (from > to) {
 		std::swap(from, to);
 	}
-	float cycle = to - from;
-	if(ofIsFloatEqual(cycle, 0.0f)){
+	ofFloat cycle = to - from;
+	if(ofIsFloatEqual<ofFloat>(cycle, 0.0f)){
 		return to;
 	}
 	return value - cycle * floor((value - from) / cycle);
 }
 
 //--------------------------------------------------
-float ofWrapRadians(float angle, float from, float to){
+ofFloat ofWrapRadians(ofFloat angle, ofFloat from, ofFloat to) {
 	return ofWrap(angle, from, to);
 }
 
-float ofWrapDegrees(float angle, float from, float to){
+ofFloat ofWrapDegrees(ofFloat angle, ofFloat from, ofFloat to) {
 	return ofWrap(angle, from, to);
 }
 
 //--------------------------------------------------
-float ofLerpDegrees(float currentAngle, float targetAngle, float pct) {
-    return currentAngle + ofAngleDifferenceDegrees(currentAngle,targetAngle) * pct;
+ofFloat ofLerpDegrees(ofFloat currentAngle, ofFloat targetAngle, ofFloat pct) {
+	return currentAngle + ofAngleDifferenceDegrees(currentAngle, targetAngle) * pct;
 }
 
 //--------------------------------------------------
-float ofLerpRadians(float currentAngle, float targetAngle, float pct) {
+ofFloat ofLerpRadians(ofFloat currentAngle, ofFloat targetAngle, ofFloat pct) {
 	return currentAngle + ofAngleDifferenceRadians(currentAngle,targetAngle) * pct;
 }
 
@@ -249,13 +250,11 @@ float ofSignedNoise(const glm::vec4& p){
 }
 
 //--------------------------------------------------
-float ofAngleDifferenceDegrees(float currentAngle, float targetAngle) {
+ofFloat ofAngleDifferenceDegrees(ofFloat currentAngle, ofFloat targetAngle) {
 	return ofWrapDegrees(targetAngle - currentAngle);
 }
 
 //--------------------------------------------------
-float ofAngleDifferenceRadians(float currentAngle, float targetAngle) {
+ofFloat ofAngleDifferenceRadians(ofFloat currentAngle, ofFloat targetAngle) {
 	return  ofWrapRadians(targetAngle - currentAngle);
 }
-
-

@@ -368,7 +368,7 @@ void ofNode::rotate(float degrees, const glm::vec3& v) {
 
 //----------------------------------------
 void ofNode::rotateDeg(float degrees, const glm::vec3& v) {
-	rotate(glm::angleAxis(ofDegToRad(degrees), v));
+	rotate(glm::angleAxis<float>(ofDegToRad(degrees), v));
 }
 
 //----------------------------------------
@@ -383,7 +383,7 @@ void ofNode::rotate(float degrees, float vx, float vy, float vz) {
 
 //----------------------------------------
 void ofNode::rotateDeg(float degrees, float vx, float vy, float vz) {
-	rotate(glm::angleAxis(ofDegToRad(degrees), glm::vec3(vx, vy, vz)));
+	rotate(glm::angleAxis<float>(ofDegToRad(degrees), glm::vec3(vx, vy, vz)));
 }
 
 //----------------------------------------
@@ -411,7 +411,7 @@ void ofNode::rotateAround(float degrees, const glm::vec3& axis, const glm::vec3&
 
 //----------------------------------------
 void ofNode::rotateAroundDeg(float degrees, const glm::vec3& axis, const glm::vec3& point) {
-	rotateAround(glm::angleAxis(ofDegToRad(degrees), axis), point);
+	rotateAround(glm::angleAxis<float>(ofDegToRad(degrees), axis), point);
 }
 
 //----------------------------------------
@@ -588,8 +588,8 @@ void ofNode::orbitDeg(float longitude, float latitude, float radius, ofNode& cen
 //----------------------------------------
 void ofNode::orbitDeg(float longitude, float latitude, float radius, const glm::vec3& centerPoint) {
 	glm::quat q = 
-	          glm::angleAxis(ofDegToRad(longitude), glm::vec3(0, 1, 0)) 
-	        * glm::angleAxis(ofDegToRad(latitude),  glm::vec3(1, 0, 0));
+	          glm::angleAxis<float>(ofDegToRad(longitude), glm::vec3(0, 1, 0))
+	        * glm::angleAxis<float>(ofDegToRad(latitude),  glm::vec3(1, 0, 0));
 
 	glm::vec4 p { 0.f, 0.f, 1.f, 0.f };	   // p is a direction, not a position, so .w == 0
 	
